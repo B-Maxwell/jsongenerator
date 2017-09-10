@@ -6,23 +6,29 @@ public class Main {
 
     private static final String jsonObjectString =
             "{" +
-                    "\"name\": \"{{ name() }}\", " +
-                    "\"age\": \"{{ integer() }}\", " +
+                    "\"name\": \"{{ fullName() }}\", " +
+                    "\"age\": \"{{ integer(1,60) }}\", " +
                     "\"friends\": [" +
-                        "\"{{ name() }}\"," +
-                        "\"{{ name() }}\"" +
+                        "\"{{ repeat(5) }}\"," +
+                        "\"{{ fullName() }}\"" +
                     "]," +
                     "\"contact\": {" +
-                        "\"name\": \"{{ name() }}\", " +
-                        "\"number\": \"{{ phoneNumber() }}\", " +
-                        "\"family_member\": true" +
-                    "}" +
+                        "\"name\": \"{{ fullName() }}\"," +
+                        "\"number\": \"{{ phoneNumber() }}\"," +
+                        "\"family_member\": \"{{ boolean() }}\"," +
+                        "\"email\": \"{{ email() }}\"" +
+                    "}, " +
+                    "\"website\": \"{{ url() }}\"," +
+                    "\"hometown\": \"{{ city() }}\"," +
+                    "\"state\": \"{{ stateAbbrev() }}\"" +
             "}";
 
     private static final String jsonArrayString =
             "[" +
-                    "\"hello\"," +
-                    "\"goodbye\"" +
+                    "\"{{ word() }}\"," +
+                    "\"{{ letter(6) }}\"," +
+                    "\"{{ firstName() }}\"," +
+                    "\"{{ lastName() }}\"" +
             "]";
 
     public static void main(String[] args) throws IOException {

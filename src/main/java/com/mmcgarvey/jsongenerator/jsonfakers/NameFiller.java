@@ -1,16 +1,33 @@
 package com.mmcgarvey.jsongenerator.jsonfakers;
 
+import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class NameFiller extends JsonFiller {
 
     @Override
-    public String getName() {
-        return "name";
+    public List<String> getMethodNames() {
+        return Arrays.asList("firstName", "lastName", "fullName");
     }
 
     @Override
-    public Object run(String text, String parameters, Integer start, Integer end) {
-        String fakeText = faker.name().fullName();
-        return replaceText(text, fakeText, start, end);
+    public Object run(JsonGeneratorString generatorString) {
+        String name;
+        switch (generatorString.getGeneratorMethodName()) {
+            case "firstName":
+                name = faker.name().firstName();
+                break;
+            case "lastName":
+                name = faker.name().lastName();
+                break;
+            case "fullName":
+                name = faker.name().fullName();
+                break;
+            default:
+                return generatorString.getJsonString();
+        }
+        return replaceText(generatorString, name);
     }
 }

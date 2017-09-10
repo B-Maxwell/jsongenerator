@@ -4,16 +4,17 @@ import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
-public class PhoneNumberFiller extends JsonFiller {
+public class BooleanFiller extends JsonFiller {
 
     @Override
     public List<String> getMethodNames() {
-        return Collections.singletonList("phoneNumber");
+        return Collections.singletonList("boolean");
     }
 
     @Override
     public Object run(JsonGeneratorString generatorString) {
-        return replaceText(generatorString, faker.phoneNumber().cellPhone());
+        return random.nextBoolean();
     }
 }
