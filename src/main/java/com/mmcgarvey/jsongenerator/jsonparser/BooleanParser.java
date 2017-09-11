@@ -1,4 +1,4 @@
-package com.mmcgarvey.jsongenerator;
+package com.mmcgarvey.jsongenerator.jsonparser;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

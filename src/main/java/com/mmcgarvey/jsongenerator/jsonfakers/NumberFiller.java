@@ -1,5 +1,6 @@
 package com.mmcgarvey.jsongenerator.jsonfakers;
 
+import com.mmcgarvey.jsongenerator.model.JsonGeneratorMethod;
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 
 import java.util.Arrays;
@@ -13,12 +14,18 @@ public class NumberFiller extends JsonFiller {
     }
 
     @Override
+    public Class returns() {
+        return Number.class;
+    }
+
+    @Override
     public Object run(JsonGeneratorString generatorString) {
         Integer min = null;
         Integer max = null;
-        List<String> parameters = generatorString.getGeneratorMethodParameters();
+        JsonGeneratorMethod generatorMethod = generatorString.getGeneratorMethod();
+        List<String> parameters = generatorMethod.getParameters();
         if (!parameters.isEmpty()) {
-            if (generatorString.getGeneratorMethodName().equals("double")
+            if (generatorMethod.getName().equals("double")
                     || parameters.size() > 2) {
                 return generatorString.getJsonString();
             }
@@ -29,7 +36,7 @@ public class NumberFiller extends JsonFiller {
                 max = Integer.parseInt(parameters.get(0));
             }
         }
-        switch (generatorString.getGeneratorMethodName()) {
+        switch (generatorMethod.getName()) {
             case "integer":
                 return getInt(min, max);
             case "double":

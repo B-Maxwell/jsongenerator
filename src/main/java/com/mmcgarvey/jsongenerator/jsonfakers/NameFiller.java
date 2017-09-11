@@ -13,9 +13,14 @@ public class NameFiller extends JsonFiller {
     }
 
     @Override
+    public Class returns() {
+        return String.class;
+    }
+
+    @Override
     public Object run(JsonGeneratorString generatorString) {
         String name;
-        switch (generatorString.getGeneratorMethodName()) {
+        switch (generatorString.getGeneratorMethod().getName()) {
             case "firstName":
                 name = faker.name().firstName();
                 break;

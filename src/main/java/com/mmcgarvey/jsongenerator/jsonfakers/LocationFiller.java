@@ -13,9 +13,14 @@ public class LocationFiller extends JsonFiller {
     }
 
     @Override
+    public Class returns() {
+        return String.class;
+    }
+
+    @Override
     public Object run(JsonGeneratorString generatorString) {
         String location;
-        switch (generatorString.getGeneratorMethodName()) {
+        switch (generatorString.getGeneratorMethod().getName()) {
             case "street":
                 location = faker.address().streetAddress();
                 break;

@@ -1,6 +1,7 @@
 package com.mmcgarvey.jsongenerator.jsonfakers;
 
 import com.github.javafaker.Faker;
+import com.mmcgarvey.jsongenerator.model.JsonGeneratorMethod;
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 
 import java.util.List;
@@ -11,12 +12,19 @@ public abstract class JsonFiller {
     protected static final Random random = new Random();
 
     public abstract List<String> getMethodNames();
+
+    public abstract Class returns();
+
+    public boolean returnsString() {
+        return returns().equals(String.class);
+    }
+
     public abstract Object run(JsonGeneratorString generatorString);
 
     protected String replaceText(JsonGeneratorString generatorString, String fillerText) {
-        String text = generatorString.getJsonString();
-        String part1 = text.substring(0, generatorString.getGeneratorMethodIndexStart());
-        String part2 = text.substring(generatorString.getGeneratorMethodIndexEnd());
+        JsonGeneratorMethod generatorMethod = generatorString.getGeneratorMethod();
+        String part1 = generatorString.getJsonString().substring(0, generatorMethod.getStart());
+        String part2 = generatorString.getJsonString().substring(generatorMethod.getEnd());
         return part1 + fillerText + part2;
     }
 }

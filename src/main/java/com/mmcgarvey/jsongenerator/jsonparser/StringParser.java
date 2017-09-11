@@ -1,7 +1,8 @@
-package com.mmcgarvey.jsongenerator;
+package com.mmcgarvey.jsongenerator.jsonparser;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.mmcgarvey.jsongenerator.jsonfakers.*;
+import com.mmcgarvey.jsongenerator.model.JsonGeneratorMethod;
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 
 import java.util.HashMap;
@@ -9,10 +10,6 @@ import java.util.Map;
 
 public class StringParser implements JsonTypeParser {
     private static final Map<String, JsonFiller> fillers = new HashMap<>();
-
-    private static void addFiller(JsonFiller filler) {
-        filler.getMethodNames().forEach(name -> fillers.put(name, filler));
-    }
 
     static {
         addFiller(new NumberFiller());
@@ -25,14 +22,22 @@ public class StringParser implements JsonTypeParser {
         addFiller(new LocationFiller());
     }
 
+    private static void addFiller(JsonFiller filler) {
+        filler.getMethodNames().forEach(name -> fillers.put(name, filler));
+    }
 
     @Override
     public Object parse(JsonNode node) {
         JsonGeneratorString generatorString = new JsonGeneratorString(node.asText());
-        if (generatorString.isGeneratorString()) {
-            JsonFiller filler = fillers.get(generatorString.getGeneratorMethodName());
+        while (generatorString.isGeneratorString()) {
+            JsonGeneratorMethod generatorMethod = generatorString.getGeneratorMethod();
+            JsonFiller filler = fillers.get(generatorMethod.getName());
             if (filler != null) {
-                return filler.run(generatorString);
+                Object filled = filler.run(generatorString);
+                if (!filler.returnsString()) {
+                    return filled;
+                }
+                generatorString = new JsonGeneratorString(filled.toString());
             }
         }
         return generatorString.getJsonString();

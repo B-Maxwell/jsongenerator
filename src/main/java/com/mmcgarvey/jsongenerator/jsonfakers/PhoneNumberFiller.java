@@ -13,6 +13,11 @@ public class PhoneNumberFiller extends JsonFiller {
     }
 
     @Override
+    public Class returns() {
+        return String.class;
+    }
+
+    @Override
     public Object run(JsonGeneratorString generatorString) {
         return replaceText(generatorString, faker.phoneNumber().cellPhone());
     }

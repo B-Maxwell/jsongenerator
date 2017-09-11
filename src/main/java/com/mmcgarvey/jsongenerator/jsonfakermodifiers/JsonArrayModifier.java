@@ -1,4 +1,10 @@
 package com.mmcgarvey.jsongenerator.jsonfakermodifiers;
 
-public interface JsonArrayModifier  extends JsonFakerModifier {
+import com.fasterxml.jackson.databind.JsonNode;
+import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
+
+import java.util.List;
+
+public interface JsonArrayModifier extends JsonFakerModifier {
+    public List<JsonNode> modifyArray(JsonNode node, JsonGeneratorString modifier);
 }

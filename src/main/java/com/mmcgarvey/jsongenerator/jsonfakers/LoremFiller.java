@@ -1,5 +1,6 @@
 package com.mmcgarvey.jsongenerator.jsonfakers;
 
+import com.mmcgarvey.jsongenerator.model.JsonGeneratorMethod;
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 
 import java.util.Arrays;
@@ -13,10 +14,16 @@ public class LoremFiller extends JsonFiller {
     }
 
     @Override
+    public Class returns() {
+        return String.class;
+    }
+
+    @Override
     public Object run(JsonGeneratorString generatorString) {
         String lorem;
-        Integer amount = getAmount(generatorString.getGeneratorMethodParameters());
-        switch (generatorString.getGeneratorMethodName()) {
+        JsonGeneratorMethod generatorMethod = generatorString.getGeneratorMethod();
+        Integer amount = getAmount(generatorMethod.getParameters());
+        switch (generatorMethod.getName()) {
             case "letter":
                 lorem = getLetter(amount);
                 break;

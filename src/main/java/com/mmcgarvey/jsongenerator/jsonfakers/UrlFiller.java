@@ -13,6 +13,11 @@ public class UrlFiller extends JsonFiller {
     }
 
     @Override
+    public Class returns() {
+        return String.class;
+    }
+
+    @Override
     public Object run(JsonGeneratorString generatorString) {
         return replaceText(generatorString, faker.internet().url());
     }
