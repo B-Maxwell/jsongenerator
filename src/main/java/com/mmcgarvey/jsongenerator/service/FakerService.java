@@ -10,9 +10,7 @@ public class FakerService {
         FakerService.faker = faker;
     }
 
-    public Fakeable getFaker() {
-        if (faker == null) {
-            return new Faker();
-        }
+    public Faker getFaker() {
+        return new Faker();
     }
 }
