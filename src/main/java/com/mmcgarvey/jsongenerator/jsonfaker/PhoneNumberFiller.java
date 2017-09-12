@@ -1,15 +1,15 @@
-package com.mmcgarvey.jsongenerator.jsonfakers;
+package com.mmcgarvey.jsongenerator.jsonfaker;
 
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 
 import java.util.Collections;
 import java.util.List;
 
-public class EmailFiller extends JsonFiller {
+public class PhoneNumberFiller extends JsonFiller {
 
     @Override
     public List<String> getMethodNames() {
-        return Collections.singletonList("email");
+        return Collections.singletonList("phoneNumber");
     }
 
     @Override
@@ -19,7 +19,6 @@ public class EmailFiller extends JsonFiller {
 
     @Override
     public Object run(JsonGeneratorString generatorString) {
-        String fakeEmail = faker.internet().emailAddress();
-        return replaceText(generatorString, fakeEmail);
+        return replaceText(generatorString, faker.phoneNumber().cellPhone());
     }
 }

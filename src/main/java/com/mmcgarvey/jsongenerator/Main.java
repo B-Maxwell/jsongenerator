@@ -1,7 +1,5 @@
 package com.mmcgarvey.jsongenerator;
 
-import com.mmcgarvey.jsongenerator.jsonparser.JsonParser;
-
 import java.io.IOException;
 
 public class Main {

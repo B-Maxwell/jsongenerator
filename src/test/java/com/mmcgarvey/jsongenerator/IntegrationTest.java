@@ -1,5 +1,4 @@
 package com.mmcgarvey.jsongenerator;
 
-public class JsonParserTest {
-
+public class IntegrationTest {
 }

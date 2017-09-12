@@ -2,6 +2,7 @@ package com.mmcgarvey.jsongenerator.jsonparser;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.mmcgarvey.jsongenerator.JsonParser;
 
 import java.util.HashMap;
 import java.util.Map;

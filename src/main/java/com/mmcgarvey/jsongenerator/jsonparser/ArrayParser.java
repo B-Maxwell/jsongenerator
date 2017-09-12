@@ -4,8 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.mmcgarvey.jsongenerator.jsonfakermodifiers.JsonArrayModifier;
-import com.mmcgarvey.jsongenerator.jsonfakermodifiers.Repeat;
+import com.mmcgarvey.jsongenerator.JsonParser;
+import com.mmcgarvey.jsongenerator.jsonfakermodifier.JsonArrayModifier;
+import com.mmcgarvey.jsongenerator.jsonfakermodifier.Repeat;
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorMethod;
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 

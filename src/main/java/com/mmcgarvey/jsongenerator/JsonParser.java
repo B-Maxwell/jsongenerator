@@ -1,9 +1,10 @@
-package com.mmcgarvey.jsongenerator.jsonparser;
+package com.mmcgarvey.jsongenerator;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeType;
+import com.mmcgarvey.jsongenerator.jsonparser.*;
 
 import java.io.IOException;
 

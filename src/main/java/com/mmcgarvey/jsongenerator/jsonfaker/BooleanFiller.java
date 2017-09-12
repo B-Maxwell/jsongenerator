@@ -1,4 +1,4 @@
-package com.mmcgarvey.jsongenerator.jsonfakers;
+package com.mmcgarvey.jsongenerator.jsonfaker;
 
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 

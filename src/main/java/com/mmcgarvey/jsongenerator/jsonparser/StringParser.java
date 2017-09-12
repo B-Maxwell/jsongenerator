@@ -1,7 +1,7 @@
 package com.mmcgarvey.jsongenerator.jsonparser;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.mmcgarvey.jsongenerator.jsonfakers.*;
+import com.mmcgarvey.jsongenerator.jsonfaker.*;
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorMethod;
 import com.mmcgarvey.jsongenerator.model.JsonGeneratorString;
 
